@@ -5,15 +5,15 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gorilla/mux"
+	"github.com/gin-gonic/gin"
 	"github.com/kevinyang777/loginer/controller"
 )
 
 func main() {
 
-	router := mux.NewRouter()
+	router := gin.Default()
 
-	router.HandleFunc("/api/user", controller.CreateAccount).Methods("POST")
+	router.POST("/api/user", controller.CreateAccount)
 	// router.HandleFunc("/api/user/login", controllers.Authenticate).Methods("POST")
 	// router.HandleFunc("/api/contacts/new", controllers.CreateContact).Methods("POST")
 	// router.HandleFunc("/api/me/contacts", controllers.GetContactsFor).Methods("GET") //  user/2/contacts
@@ -21,10 +21,11 @@ func main() {
 	// router.Use(app.JwtAuthentication) //attach JWT auth middleware
 
 	//router.NotFoundHandler = app.NotFoundHandler
+	// router.run()
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8000" //localhost
+		port = "8001" //localhost
 	}
 
 	fmt.Println(port)

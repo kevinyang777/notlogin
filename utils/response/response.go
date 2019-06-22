@@ -1,15 +1,26 @@
 package response
 
 import (
-	"encoding/json"
-	"net/http"
+	"github.com/gin-gonic/gin"
 )
 
-func Message(status bool, message string) map[string]interface{} {
-	return map[string]interface{}{"status": status, "message": message}
+// func Message(status bool, message string) map[string]interface{} {
+// 	return map[string]interface{}{"status": status, "message": message}
+// }
+
+// func Respond(w http.ResponseWriter, data map[string]interface{}) {
+// 	w.Header().Add("Content-Type", "application/json")
+// 	json.NewEncoder(w).Encode(data)
+// }
+
+func SuccessResponse(data *gin.Context, message map[string]interface{}) {
+	data.JSON(200, gin.H{
+		"message": "success",
+	})
 }
 
-func Respond(w http.ResponseWriter, data map[string]interface{}) {
-	w.Header().Add("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(data)
+func FailResponse(data *gin.Context) {
+	data.JSON(400, gin.H{
+		"message": "fail",
+	})
 }

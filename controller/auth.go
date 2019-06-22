@@ -1,14 +1,22 @@
 package controller
 
 import (
-	"net/http"
+	"fmt"
 
-	base "github.com/kevinyang777/loginer/utils/response"
+	"github.com/gin-gonic/gin"
+	"github.com/kevinyang777/loginer/model"
+	"github.com/kevinyang777/loginer/utils/response"
 )
 
-var CreateAccount = func(req http.ResponseWriter, res *http.Request) {
-	// account := &model.Account{}
-	// accData := `{"id":"123,"name":"jancuk"}`
-	// resp := json.NewDecoder(accDat).Decode(account)
-	base.Respond(req, base.Message(false, "Invalid request"))
+var CreateAccount = func(data *gin.Context) {
+	account := &model.Account{}
+	err := data.BindJSON(&account)
+	fmt.Println("error", err)
+	if err != nil {
+		response.FailResponse(data)
+		return
+	}
+	fmt.Println("name", account.Name)
+	response.SuccessResponse(data, `{"asu":"gblk"}`)
+	return
 }

@@ -1,6 +1,6 @@
 package model
 
 type Account struct {
-	id   int64    `json:"id"`
-	name []string `json:"name"`
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
 }
