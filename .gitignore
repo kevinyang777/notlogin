@@ -1,4 +1,4 @@
 .DS_Store
 .vscode
-/vendora
-Gopkg.locka
+/vendor
+Gopkg.lock
