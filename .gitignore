@@ -1,4 +1,4 @@
 .DS_Store
 .vscode
 /vendor
-.gin_bin
+gin-bin
