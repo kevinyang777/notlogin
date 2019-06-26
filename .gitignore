@@ -1,4 +1,4 @@
 .DS_Store
 .vscode
 /vendor
-Gopkg.lock
+.gin_bin
